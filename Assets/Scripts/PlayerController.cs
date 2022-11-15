@@ -6,15 +6,20 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 20f;
     public float turnSpeed = 10f;
-    public float horizontalInput;
-
+    private float horizontalInput;
+    private float verticalInput;
     void Update()
     {
-        // transform.Translate(0, 0, 1);
+        // Designacion de Inputs;
         horizontalInput = Input.GetAxis("Horizontal");
-        //Movimiento pa lante
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        verticalInput = Input.GetAxis("Vertical");
+        //Movimiento vertical
+        transform.Translate(Vector3.forward * speed * Time.deltaTime * verticalInput);
         //Movimiento lateral
+        /*
         transform.Translate(Vector3.right * turnSpeed * Time.deltaTime * horizontalInput);
+        */
+        transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * horizontalInput);
+
     }
 }
